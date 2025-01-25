@@ -1,37 +1,16 @@
-// Ownership
-
-/*
-fn main() {
-    let x = 1; // crated on stack
-    let y = 3; // created on stack
-
-    println!("{}", sum(x, y));
-    println!("Hello, world!");
+enum Direction {
+    North,
+    East,
+    South,
+    West,
 }
-
-fn sum(a: i32, b: i32) -> i32 {
-    let c = a + b;
-    return c;
-}
-*/
-
-/*
-fn main() {
-    let s1 = String::from("hello");
-    let s2 = s1.clone();
-    println!("{}", s1); // Compiles now
-}
-*/
 
 fn main() {
-    let s1 = String::from("hello");
-    let s2 = takes_ownership(s1);
-    println!("{}", s2);
+    move_around("north".to_string());
 }
 
-fn takes_ownership(some_string: String) -> String {
-    println!("{}", some_string); 
-    return some_string; // return the string ownership back to the original main fn
+fn move_around(direction: String) {
+    if direction == "north" {
+        println!("Moving North");
+    }
 }
-
-// Borrowing and references
