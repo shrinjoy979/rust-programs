@@ -156,4 +156,105 @@ fn main() {
         println!("{}", value)
     }
 }
- */
+*/
+
+/*
+fn main() {
+    let v1 = vec![1,2,3];
+    let iter = v1.iter();
+
+    // let iter2 = iter.map(|x| x+1);
+    let iter2 = iter.filter(|x| *x % 2 == 0);
+
+    for value in iter2 {
+        print!("{}", value);
+    }
+}
+*/
+
+/* 
+// Basic String Operation
+fn main() {
+    let mut name = String::from("Shrinjoy"); // Create String
+
+    name.push_str(" Saha"); // Mutating String
+
+    name.replace_range(8..name.len(), ""); // Deleting from a String
+    println!("name is {}", name);
+}
+*/
+
+/*
+// Write a function that takes a string as an input And returns the first word from it
+fn main() {
+    let givenStr = String::from("Shrinjoy Saha");
+    let ans = get_first_word(givenStr);
+    println!("{}", ans);
+}
+
+fn get_first_word(str: String) -> String{
+    let mut ans = String::from("");
+
+    for i in str.chars() {
+        if i == ' ' {
+            break;
+        }
+        ans.push_str(&i.to_string());
+    }
+
+    return ans;
+}
+
+The above solution have problem
+We take up double the memory
+If the `name` string gets `cleared` , `ans` still has `hello` as the value in it
+*/
+
+/*
+// more optimal way using slice
+fn main() {
+    let mut givenStr = String::from("Shrinjoy Saha");
+    let ans = get_first_word(&givenStr);
+
+    println!("{}", ans);
+}
+
+fn get_first_word(str: &String) -> &str{
+    let mut index = 0;
+
+    for i in str.chars() {
+        if i == ' ' {
+            break;
+        }
+
+        index = index + 1
+    }
+
+    return &str[0..index];
+}
+*/
+
+// trait
+pub trait Summary {
+    fn summarize(&self) -> String;
+}
+
+struct User {
+    name: String,
+    age: u32,
+}
+
+impl Summary for User {
+    fn summarize(&self) -> String {
+        return format!("User name is {}, and age is {}", self.name, self.age);
+    }
+}
+
+fn main() {
+    let user = User {
+        name: String::from("Shrinjoy"),
+        age: 27,
+    };
+
+    println!("{}", user.summarize());
+}
