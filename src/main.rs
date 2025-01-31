@@ -234,27 +234,102 @@ fn get_first_word(str: &String) -> &str{
 }
 */
 
+/* 
 // trait
+
+// Define the trait
 pub trait Summary {
     fn summarize(&self) -> String;
 }
 
+// Define a struct
 struct User {
     name: String,
     age: u32,
 }
 
+// Implement a traiton the struct
 impl Summary for User {
     fn summarize(&self) -> String {
         return format!("User name is {}, and age is {}", self.name, self.age);
     }
 }
 
+// Traits as parameters
+pub fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+// Define the struct and using it's function
 fn main() {
     let user = User {
         name: String::from("Shrinjoy"),
         age: 27,
     };
 
-    println!("{}", user.summarize());
+    // println!("{}", user.summarize());
+    notify(&user);
 }
+*/
+
+/*
+// Write a code to get the longest string
+fn main() {
+    let longest = longest(String::from("Shrinjoy"), String::from("Saha"));
+    print!("Longest string is {}", longest);
+}
+
+fn longest(a: String, b:String) -> String {
+    if a.len() > b.len() {
+        return a
+    }
+    return b
+}
+ */
+
+ /*
+// Multi Threading
+use std::thread;
+use std::time::Duration;
+
+fn main() {
+    let sum = 0;
+
+    let handle = thread::spawn(|| {
+        for i in 1..10 {
+            println!("Hi number {i} from the spawned thread!");
+            thread::sleep(Duration::from_millis(1));
+        }
+    });
+
+    handle.join().unwrap(); // will wait until spawn thread complete execution
+
+    for i in 1..5 {
+        println!("Hi number {i} from the main thread!");
+        thread::sleep(Duration::from_millis(1));
+    }
+}
+ */
+
+ /*
+// Message passing from one thread to another
+use std::{
+    sync::mpsc, // Multi-producer, single-consumer 
+    thread:: {self, spawn}
+};
+
+fn main() {
+    let (tx, rx) = mpsc::channel();
+    spawn(move || {
+        tx.send(String::from("Hello world"));
+    });
+
+    // you shoud not have unwrap in your code, if you are ok with code stoped, when getting an error. then you can use unwrap
+
+    let value = rx.recv();
+    match value {
+        Ok(value) => println!("{}", value),
+        Err(err) => println!("Error while reading the data"),
+    }
+}
+*/
